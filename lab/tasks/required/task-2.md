@@ -21,15 +21,15 @@ The back-end contains intentional bugs that you will discover and fix by writing
   - [1.2. Create a `Lab Task` issue](#12-create-a-lab-task-issue)
   - [1.3. Part A: Run unit tests locally](#13-part-a-run-unit-tests-locally)
     - [1.3.1. Create the environment file for unit tests](#131-create-the-environment-file-for-unit-tests)
-    - [1.3.1. Run existing unit tests](#131-run-existing-unit-tests)
-    - [1.3.2. Add a new unit test](#132-add-a-new-unit-test)
-    - [1.3.3. Fix the bug](#133-fix-the-bug)
-    - [1.3.4. Rerun unit tests](#134-rerun-unit-tests)
+    - [1.3.2. Run existing unit tests](#132-run-existing-unit-tests)
+    - [1.3.3. Add a new unit test](#133-add-a-new-unit-test)
+    - [1.3.4. Fix the bug](#134-fix-the-bug)
+    - [1.3.5. Rerun unit tests](#135-rerun-unit-tests)
     - [1.3.6. Commit your changes](#136-commit-your-changes)
-    - [1.3.5. Transfer the changes to your VM](#135-transfer-the-changes-to-your-vm)
-    - [1.3.6. Deploy the fixed `app` service on your VM](#136-deploy-the-fixed-app-service-on-your-vm)
+    - [1.3.7. Transfer the changes to your VM](#137-transfer-the-changes-to-your-vm)
+    - [1.3.8. Deploy the fixed `app` service on your VM](#138-deploy-the-fixed-app-service-on-your-vm)
   - [1.4. Part B: Run end-to-end tests remotely](#14-part-b-run-end-to-end-tests-remotely)
-    - [1.4.1. Create the environment file for E2E tests](#141-create-the-environment-file-for-e2e-tests)
+    - [1.4.1. Create the environment file for end-to-end tests](#141-create-the-environment-file-for-end-to-end-tests)
     - [1.4.2. Run existing end-to-end tests](#142-run-existing-end-to-end-tests)
     - [1.4.3. Add two end-to-end tests](#143-add-two-end-to-end-tests)
     - [1.4.4. Fix the bug](#144-fix-the-bug)
@@ -59,11 +59,14 @@ Title: `[Task] Back-end Testing`
 ### 1.3. Part A: Run unit tests locally
 
 <!-- no toc -->
-- [1.3.1. Run existing unit tests](#131-run-existing-unit-tests)
-- [1.3.2. Add a new unit test](#132-add-a-new-unit-test)
-- [1.3.3. Fix the bug](#133-fix-the-bug)
-- [1.3.4. Rerun unit tests](#134-rerun-unit-tests)
-- [1.3.5. Deploy the fixed `app` service on your VM](#136-deploy-the-fixed-app-service-on-your-vm)
+- [1.3.1. Create the environment file for unit tests](#131-create-the-environment-file-for-unit-tests)
+- [1.3.2. Run existing unit tests](#132-run-existing-unit-tests)
+- [1.3.3. Add a new unit test](#133-add-a-new-unit-test)
+- [1.3.4. Fix the bug](#134-fix-the-bug)
+- [1.3.5. Rerun unit tests](#135-rerun-unit-tests)
+- [1.3.6. Commit your changes](#136-commit-your-changes)
+- [1.3.7. Transfer the changes to your VM](#137-transfer-the-changes-to-your-vm)
+- [1.3.8. Deploy the fixed `app` service on your VM](#138-deploy-the-fixed-app-service-on-your-vm)
 
 > [!NOTE]
 > Unit tests do not require a running server. They test individual functions in isolation.
@@ -78,7 +81,7 @@ Title: `[Task] Back-end Testing`
    cp .env.tests.unit.example .env.tests.unit.secret
    ```
 
-#### 1.3.1. Run existing unit tests
+#### 1.3.2. Run existing unit tests
 
 1. To run the existing unit tests,
 
@@ -96,7 +99,7 @@ Title: `[Task] Back-end Testing`
    ===================== 3 passed in X.XXs =====================
    ```
 
-#### 1.3.2. Add a new unit test
+#### 1.3.3. Add a new unit test
 
 > [!TIP]
 > Feel free to use AI to generate the tests. Make sure to provide them with necessary context.
@@ -149,7 +152,7 @@ Title: `[Task] Back-end Testing`
    - The name of the failing test is `test_filter_includes_interaction_at_boundary`.
    - The failed [assertion](../../../wiki/testing.md#assertion) is `assert 0 == 1` — the filter returned 0 interactions, but 1 was expected.
 
-#### 1.3.3. Fix the bug
+#### 1.3.4. Fix the bug
 
 1. [Open the file](../../../wiki/vs-code.md#open-the-file):
    [`backend/app/routers/interactions.py`](../../../backend/app/routers/interactions.py).
@@ -179,7 +182,7 @@ Title: `[Task] Back-end Testing`
 
    </details>
 
-#### 1.3.4. Rerun unit tests
+#### 1.3.5. Rerun unit tests
 
 1. To rerun the unit tests,
 
@@ -207,7 +210,7 @@ Title: `[Task] Back-end Testing`
    fix: use <= instead of < in max_item_id filter
    ```
 
-#### 1.3.5. Transfer the changes to your VM
+#### 1.3.7. Transfer the changes to your VM
 
 > [!NOTE]
 > See [`origin`](../../../wiki/github.md#origin).
@@ -236,7 +239,7 @@ Title: `[Task] Back-end Testing`
 
    Replace [`<task-branch>`](../../../wiki/git-workflow.md#task-branch).
 
-#### 1.3.6. Deploy the fixed `app` service on your VM
+#### 1.3.8. Deploy the fixed `app` service on your VM
 
 1. To rebuild and start the [`app` service](../../../wiki/docker-compose-yml.md#app-service) in [background](../../../wiki/operating-system.md#background-process),
 
@@ -264,6 +267,7 @@ Title: `[Task] Back-end Testing`
 ### 1.4. Part B: Run end-to-end tests remotely
 
 <!-- no toc -->
+- [1.4.1. Create the environment file for end-to-end tests](#141-create-the-environment-file-for-end-to-end-tests)
 - [1.4.2. Run existing end-to-end tests](#142-run-existing-end-to-end-tests)
 - [1.4.3. Add two end-to-end tests](#143-add-two-end-to-end-tests)
 - [1.4.4. Fix the bug](#144-fix-the-bug)
@@ -271,9 +275,11 @@ Title: `[Task] Back-end Testing`
 - [1.4.6. Commit the fix](#146-commit-the-fix)
 
 > [!NOTE]
-> End-to-end tests run on your local machine and send real [`HTTP` requests](../../../wiki/http.md#http-request) to the deployed version on the VM.
+> [End-to-end (E2E) tests](../../../wiki/testing.md#end-to-end-test) run on your local machine and send real [`HTTP` requests](../../../wiki/http.md#http-request) to the deployed version on the VM.
+>
+> In [Part A](#13-part-a-run-unit-tests-locally), a unit test caught a logic error inside a single function. Some bugs only appear when all components interact during a real request — for example, a mismatch between layers of the stack. End-to-end tests catch these integration-level failures.
 
-#### 1.4.1. Create the environment file for E2E tests
+#### 1.4.1. Create the environment file for end-to-end tests
 
 1. To copy the content of [`.env.tests.e2e.example`](../../../.env.tests.e2e.example) to [`.env.tests.e2e.secret`](../../../wiki/dotenv-tests-e2e-secret.md#what-is-envtestse2esecret),
 
@@ -283,7 +289,7 @@ Title: `[Task] Back-end Testing`
    cp .env.tests.e2e.example .env.tests.e2e.secret
    ```
 
-2. [Open `.env.tests.e2e.secret`](../../../wiki/vs-code.md#open-the-file).
+2. [Open](../../../wiki/vs-code.md#open-the-file) `.env.tests.e2e.secret`.
 3. Set [`API_BASE_URL`](../../../wiki/dotenv-tests-e2e-secret.md#api_base_url) to `http://<your-vm-ip-address>:<caddy-port>`. Replace:
 
    - [`<your-vm-ip-address>`](../../../wiki/vm.md#your-vm-ip-address)
@@ -386,9 +392,9 @@ Title: `[Task] Back-end Testing`
 
 #### 1.4.5. Redeploy and rerun
 
-1. [Transfer the changes to your VM](#135-transfer-the-changes-to-your-vm)
+1. [Transfer the changes to your VM](#137-transfer-the-changes-to-your-vm)
 
-2. [Deploy the fixed `app` service on your VM](#136-deploy-the-fixed-app-service-on-your-vm).
+2. [Deploy the fixed `app` service on your VM](#138-deploy-the-fixed-app-service-on-your-vm).
 
 3. To run the end-to-end tests,
 
